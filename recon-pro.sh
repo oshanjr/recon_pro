@@ -694,27 +694,9 @@ main() {
 
     
 
-    # Step 3: Vulnerability Scanning
-
+# Step 3: Vulnerability Scanning
     log "${PURPLE}[3/4] Vulnerability Scanning${NC}"
-
-    nuclei -l "$OUTPUT_DIR/alive.txt" \
-
-        -severity "$SEVERITY" \
-
-        -silent \
-
-        -stats \
-
-        -metrics \
-
-        -o "$OUTPUT_DIR/vulnerabilities.txt" 2>/dev/null
-
-    
-
-    VULNS_COUNT=$(wc -l < "$OUTPUT_DIR/vulnerabilities.txt" 2>/dev/null || echo 0)
-
-    log "${GREEN}[✓] Found $VULNS_COUNT potential vulnerabilities${NC}"
+    nuclei -l "$OUTPUT_DIR/alive.txt" -severity "$SEVERITY" -silent -stats -metrics -o "$OUTPUT_DIR/vulnerabilities.txt" 2>/dev/null
 
     
 
