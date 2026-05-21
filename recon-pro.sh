@@ -62,7 +62,7 @@ check_tools() {
 
     command -v subfinder >/dev/null 2>&1 || missing_tools+=("subfinder")
 
-    command -v httpx >/dev/null 2>&1 || missing_tools+=("httpx")
+    command -v httpx-toolkit >/dev/null 2>&1 || missing_tools+=("httpx-toolkit")
 
     command -v nuclei >/dev/null 2>&1 || missing_tools+=("nuclei")
 
@@ -676,7 +676,7 @@ main() {
 
     log "${PURPLE}[2/4] HTTP Probing${NC}"
 
-    cat "$OUTPUT_DIR/subdomains.txt" | httpx -silent -threads "$THREADS" -o "$OUTPUT_DIR/alive.txt" 2>/dev/null
+    cat "$OUTPUT_DIR/subdomains.txt" | httpx-toolkit -silent -threads "$THREADS" -o "$OUTPUT_DIR/alive.txt" 2>/dev/null
 
     ALIVE_COUNT=$(wc -l < "$OUTPUT_DIR/alive.txt" 2>/dev/null || echo 0)
 
